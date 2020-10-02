@@ -6,6 +6,10 @@
 package cs2365.project.pkg2;
 
 /**
+ * Card class is called by Deck class to create deck
+ * Functions
+ *  -Returns color/type of card for use in Game class
+ *  -Returns strings for HTML output
  *
  * @author chris
  */
