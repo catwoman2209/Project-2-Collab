@@ -5,7 +5,16 @@
  */
 package cs2365.project.pkg2;
 
+import java.io.*;
+import java.util.*;
+
 /**
+ * Output class formats output given by Game class into a usable HTML file
+ * 
+ * Will include:
+ *  - Titled project description
+ *  - Subtitles for each section
+ *  - Heading for each hand and each card followed by a description
  *
  * @author chris
  */
