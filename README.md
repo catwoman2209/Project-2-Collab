@@ -1,5 +1,5 @@
-# Schoolwork
+# UNO Collab Project
 
-This is a repository for my college CS courses. If you come across this, your criticisms would be appreciated.
+This is a repository for my CS 2365 course. The goal is to program an UNO workout with an output of statistical information.
 
-/// The Cat
+- Taylor
