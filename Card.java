@@ -67,7 +67,7 @@ class Card {
      * returns string of color if exists
      * @return 
      */
-    public String getStr(boolean getCol) {
+    public String getType(boolean getCol) {
         
         if(getCol) {
             
@@ -86,6 +86,66 @@ class Card {
             }
         }
     }
+    
+    /**
+     * Method returns string of color of card
+     * @return 
+     */
+    public String getColor() {
+        
+        return col;
+    }
+    
+    /**
+     * Method returns string of value or special card
+     * @return 
+     */
+    public String action() {
+        
+        if(isSpec) {
+            
+            return spec;
+        }
+        
+        else {
+            
+            return val+"";
+        }
+    }
+    
+    /**
+     * Method returns string of exercise
+     * @return 
+     */
+    
+    public String exer() {
+        
+        switch(col) {
+            case "Red": return "Sit Ups";
+            case "Blue": return "Push Ups";
+            case "Yellow": return "Squats";
+            case "Green": return "Lunges";
+            default: return "";
+        }
+    }
+    
+    /**
+     * Method returns string of value and color of card
+     * @return 
+     */
+    public String cardOut() {
+        
+        if(isSpec) {
+            
+            return col + " " + spec;
+        }
+        
+        else {
+            
+            return col + " " + val;
+        }
+    }
+    
     
     
 }
