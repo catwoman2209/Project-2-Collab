@@ -116,4 +116,126 @@ class Deck {
         Collections.shuffle(deckShuff);
         return deckShuff;
     }
+    
+    /**
+     * Method takes 7 or less cards from deck List, returns ArrayList as a hand,
+     * removes selected cards from deck
+     * @param amt
+     * @return 
+     */
+    public ArrayList<Card> DrawCards(int amt) {
+        
+        ArrayList<Card> dealHand = new ArrayList<Card>();
+        if(amt > D.size()) {
+            amt = D.size();
+        }
+        
+        int i = 0;
+        for(int a = D.size()-1; a>= 0 && i < amt; a--){
+            
+            if(D.get(a) != null) {
+                dealHand.add(D.get(a));
+                i++;
+            }
+        }
+        
+        i = 0;
+        for(int a = D.size()-1; a>= 0 && i < amt; a--){
+            
+            if(D.get(a) != null) {
+                D.remove(D.get(a));
+                i++;
+            }
+        }
+        
+        return dealHand;
+        
+    }
+    
+    /**
+     * Method returns ArrayList of deck in the class
+     * @return 
+     */
+    public ArrayList<Card> getDeck() {
+        
+        return D;
+    }
+    
+    /**
+     * Method returns new Deck
+     * @param newD 
+     */
+    public void refill(ArrayList<Card> newD) {
+        
+        D.clear();
+        
+        for(int i = 0; i < newD.size(); i++) {
+            
+            D.add(newD.get(i));
+        }
+    }
+    
+    /**
+     * Method removes Special cards from deck, if chosen
+     */
+    public void removeSpec() {
+        
+        for(int i = 0; i < D.size(); i++) {
+            
+            boolean isSpec = D.get(i).getSpec();
+            if(isSpec) {
+                
+                D.remove(D.get(i));
+                
+            }
+        }
+    }
+   
+    /**
+     * Method returns boolean if deck is empty or not
+     * @return 
+     */
+    public boolean isEmpty() {
+    
+        if(D.size() <= 0) {
+            
+            return  true;
+        }
+        else {
+            
+            return false;
+        }
+    }
+    
+    /**
+     * Method keeps track of exercises, passes params to global variables
+     * @param R
+     * @param SR
+     * @param MR 
+     */
+    public void stats(int R, int SR, int MR) {
+        
+        repsComp += R;
+        repsSkip += SR;
+        
+        if(MR > maxReps) {
+            maxReps = MR;
+        }
+    }
+    
+    /**
+     * Method returns array of integers with all of statistical data
+     * @return 
+     */
+    public int[] statData() {
+        
+        int[] table = new int[3];
+        
+        table[0] = repsComp;
+        table[1] = repsSkip;
+        table[2] = maxReps;
+        
+        return table;
+    }
+    
 }
