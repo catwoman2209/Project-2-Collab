@@ -33,7 +33,7 @@ class Card {
         col = color;
         spec = special;
         
-        if(!special.equals("")) {
+        if( !special.equals("") ) {
             
             isSpec = true;
         } 
@@ -69,14 +69,19 @@ class Card {
      */
     public String getType(boolean getCol) {
         
-        if(getCol) {
+        if( getCol ) {
             
+            if (isSpec){
+                return spec;
+            }
+            else {
             return col;
+            }
         }
         
         else {
             
-            if(isSpec) {
+            if( isSpec ) {
                 
                 return spec;
             }
@@ -93,6 +98,7 @@ class Card {
      */
     public String getColor() {
         
+        
         return col;
     }
     
@@ -102,7 +108,7 @@ class Card {
      */
     public String action() {
         
-        if(isSpec) {
+        if( isSpec ) {
             
             return spec;
         }
@@ -134,8 +140,8 @@ class Card {
      * @return 
      */
     public String cardOut() {
-        
-        if(isSpec) {
+   
+        if( isSpec ) {
             
             return col + " " + spec;
         }
