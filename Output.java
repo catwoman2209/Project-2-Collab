@@ -23,7 +23,7 @@ public class Output {
 	
 
 	/**
-	 * This method formats the output of the card number with an html heading.
+	 * This method formats the output of the card number with an HTML heading.
 	 * If the card has an action it will change the card # to that and output that.
 	 * 
 	 * @param card	An individual card out of a deck.
@@ -38,7 +38,7 @@ public class Output {
 	
 	/**
 	 * This method is intended to be called after the card heading has been made.
-	 * Will output html formated description of card properties like action, color
+	 * Will output HTML formated description of card properties like action, color
 	 * and exercise.
 	 * 
 	 * @param card	The card from which ever deck is called.
@@ -65,14 +65,14 @@ public class Output {
 	 */
 	public String setHandHeading(int handCount)
 	{
-		String temp = "<h3>The " + handCount + " hand follows</h3>";
+		String temp = "<h3>Hand " + handCount + " is as follows</h3>";
 		Output.add(temp);
 		return temp;
 	}
 	
 	/**
 	 * Creates an HTML compatible heading for the output file so that it can be 
-	 * read from a browser in html.
+	 * read from a browser in HTML.
 	 * 
 	 * @return	String 	Formats the header of the output file so that it works
 	 * in HTML.
@@ -96,10 +96,11 @@ public class Output {
 		return temp;
 	}
 		
-	/**Method will format an html output of the total amount of exercises and 
+	/**Method will format an HTML output of the total amount of exercises and 
 	 *  needs to be called near the end of the card game. 
 	 * @param total		Total amount of exercise done.
-	 * @param Exersice	String. Which exercise it is.
+         * @param skipped       Total amount of exercise skipped
+	 * @param exercise	String. Which exercise it is.
 	 * @return	String
 	 */
 	public String setExerciseTotal(int total, int skipped, String exercise)
@@ -111,7 +112,7 @@ public class Output {
 	}
 	
 	/**
-	 * Method will format into html the largest quantity of exercise done in a 
+	 * Method will format into HTML the largest quantity of exercise done in a 
 	 * single hand.
 	 * @param max	Should be the largest number of reps for an exercise.
 	 * @param exercise	WHich exercise it was.
@@ -146,8 +147,8 @@ public class Output {
 	}
 	
 	/**
-	 * This method adds the end tags for html output.
-	 * @return String End tags for html output.
+	 * This method adds the end tags for HTML output.
+	 * @return String End tags for HTML output.
 	 */
 	public String setEnding()
 	{
@@ -159,7 +160,7 @@ public class Output {
 	/**
 	 * This method can only be called after the end of User interaction and should
 	 * be the final step to completing the program.
-	 * Program will output html coded output to an html file.
+	 * Program will output HTML coded output to an HTML file.
 	 * 
 	 * @exception IOException If file could not be writ.
 	 */
@@ -180,7 +181,7 @@ public class Output {
 	}
 	
 	/**
-	 * Creates an empty html file for output.
+	 * Creates an empty HTML file for output.
 	 */
 	private void createFile()
 	{
