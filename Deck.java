@@ -25,75 +25,97 @@ class Deck {
     private int repsComp = 0;
     private int repsSkip = 0;
     private int maxReps = 0;
+    private String maxRepW = "";
     
     /**
-     * Method creates new deck of uno cards with color, value and/or special
+     * Method creates new deck of uno cards with color, value and, if
+     * chosen, actions
      * Stores in ArrayList D
      */
-    public void create() {
+    public void create(int input3) {
+        
+        int hold = input3;
         
         for( int i=0; i<4; i++ ) {
             
             String col = "";
             
-            switch(i) {
-                case '0': col = "Red";
-                case '1': col = "Blue";
-                case '2': col = "Yellow";
-                case '3': col = "Green";
-                default: break;
+            if (i == 0) { col = "Red"; }
+            else if (i == 1) { col = "Blue"; }
+            else if (i == 2) { col = "Yellow"; }
+            else if (i == 3) {col = "Green";}
+            
+            if(hold==1){
+              for(int j=0; j<25; j++) {
+                
+                
+                    if( j<10 ) {
+
+                        Card CRD = new Card(j, col, "");
+                        D.add(CRD);
+                    }
+
+                    else if( j<19 ) {
+
+                        Card CRD = new Card(j-9, col, "");
+                        D.add(CRD);
+                    }
+
+                    else if( j<21 ) {
+
+                        Card CRD = new Card(0, col, "Skip");
+                        D.add(CRD);
+                    }
+
+                    else if( j<23 ) {
+
+                        Card CRD = new Card(0, col, "Draw Two");
+                        D.add(CRD);
+                    }
+
+                    else {
+
+                        Card CRD = new Card(0, col, "Reverse");
+                        D.add(CRD);
+                    }
+                }
+            }
+            else {
+                for(int j=0; j<25; j++) {
+                
+                
+                    if( j<10 ) {
+
+                        Card CRD = new Card(j, col, "");
+                        D.add(CRD);
+                    }
+
+                    else if( j<19 ) {
+
+                        Card CRD = new Card(j-9, col, "");
+                        D.add(CRD);
+                    }
+                    
+                }
             }
             
-            for(int j=0; j<25; j++) {
-                
-                if( j<10 ) {
-                    
-                    Card CRD = new Card(j, col, "");
-                    D.add(CRD);
-                }
-                
-                else if( j<19 ) {
-                    
-                    Card CRD = new Card(j-9, col, "");
-                    D.add(CRD);
-                }
-                
-                else if( j<21 ) {
-                    
-                    Card CRD = new Card(0, col, "Skip");
-                    D.add(CRD);
-                }
-                
-                else if( j<23 ) {
-                    
-                    Card CRD = new Card(0, col, "Draw Two");
-                    D.add(CRD);
-                }
-                
-                else {
-                    
-                    Card CRD = new Card(0, col, "Reverse");
-                    D.add(CRD);
-                }
-            }
         }
-        
-        
-        for( int i=0; i<8; i++ ) {
+        if(hold == 1){
+          for( int i=0; i<8; i++ ) {
             
             if( i<4 ) {
-
                 Card CRD = new Card(0, "", "Wild");
                 D.add(CRD);
-            }
+                }
 
             else {
-
                 Card CRD = new Card(0, "", "Wild Draw 4");
                 D.add(CRD);
-            }
+                }
+                
+            }  
         }
-        
+         
         D = shuffleDeck(D);
     }
     
@@ -123,7 +145,7 @@ class Deck {
      * @param amt
      * @return 
      */
-    public ArrayList<Card> DrawCards(int amt) {
+    public ArrayList<Card> drawCards(int amt) {
         
         ArrayList<Card> dealHand = new ArrayList<Card>();
         if(amt > D.size()) {
@@ -156,7 +178,10 @@ class Deck {
      * Method returns ArrayList of deck in the class
      * @return 
      */
-    public ArrayList<Card> getDeck() {
+    public ArrayList<Card> getDeck(int hold) {
+        
+    
+        
         
         return D;
     }
@@ -172,22 +197,6 @@ class Deck {
         for(int i = 0; i < newD.size(); i++) {
             
             D.add(newD.get(i));
-        }
-    }
-    
-    /**
-     * Method removes Special cards from deck, if chosen
-     */
-    public void removeSpec() {
-        
-        for(int i = 0; i < D.size(); i++) {
-            
-            boolean isSpec = D.get(i).getSpec();
-            if(isSpec) {
-                
-                D.remove(D.get(i));
-                
-            }
         }
     }
    
@@ -213,14 +222,16 @@ class Deck {
      * @param SR
      * @param MR 
      */
-    public void stats(int R, int SR, int MR) {
+    public String stats(int R, int SR, int MR, String win) {
         
         repsComp += R;
         repsSkip += SR;
         
         if(MR > maxReps) {
             maxReps = MR;
+            maxRepW = win;
         }
+        return maxRepW;
     }
     
     /**
